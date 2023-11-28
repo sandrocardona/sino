@@ -20,12 +20,12 @@ const Sino=(props)=>{
       <CardText>
         {props.definicion}
       </CardText>
-      <Button>
-        {props.textobotonSI}
+      <Button onClick={()=>props.cambiarFoto(props.rutaGothic)}>
+        {props.popart}
       </Button>
       {' '}
-      <Button>
-        {props.textobotonNO}
+      <Button onClick={()=>props.cambiarFoto(props.rutaPopart)}>
+        {props.gotico}
       </Button>
     </CardBody>
   </Card>
@@ -38,7 +38,13 @@ class App extends Component {
     super(props);
     this.state={
       imagen: "./images/gothic.jpg",
+      estilo: "",
     }
+  }
+
+  f(btn){
+    this.setState({imagen:btn})
+    this.setState({estilo:btn})
   }
 
   render(){
@@ -47,10 +53,13 @@ class App extends Component {
         <Sino
           imagen={this.state.imagen}
           titulo="Estilos artísticos"
-          subtitulo="pintura"
+          subtitulo={this.state.estilo}
           definicion="Los estilos artísticos demostrados a través de la pintura"
-          textobotonSI="Pop-art"
-          textobotonNO="Gothic"
+          popart="Pop-art"
+          gotico="Gothic"
+          rutaPopart="./images/pop-art.jpg"
+          rutaGothic="./images/gothic.jpg"
+          cambiarFoto={(x)=>this.f(x)}
         />
       </div>
     );
