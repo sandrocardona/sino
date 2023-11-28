@@ -1,63 +1,56 @@
 import React,{Component} from 'react';
 import {Button} from 'reactstrap';
-import {Card, CardBody, CardTitle, CardSubtitle, CardText} from 'reactstrap';
+import {Card, CardBody, CardImg, CardTitle, CardSubtitle, CardText} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Sino=(props)=>{
-  return(<Card
-    style={{
-      width: '18rem'
-    }}
-  >
-    <img
-      alt="Sample"
-      src="https://picsum.photos/300/200"
-    />
+  return(<>
+    <Card style={{width: '18rem'}}>
     <CardBody>
       <CardTitle tag="h5">
-        Card title
+        {props.titulo}
       </CardTitle>
       <CardSubtitle
         className="mb-2 text-muted"
         tag="h6"
       >
-        Card subtitle
+        {props.subtitulo}
       </CardSubtitle>
+      <CardImg src={props.imagen}/>
       <CardText>
-        Some quick example text to build on the card title and make up the bulk of the card‘s content.
+        {props.definicion}
       </CardText>
       <Button>
         {props.textobotonSI}
-        {props.color}
       </Button>
       {' '}
       <Button>
         {props.textobotonNO}
-        {props.color}
       </Button>
     </CardBody>
-  </Card>);
+  </Card>
+  </>);
+  
 }
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state={
-      imagen:"/public/logo192.png",
+      imagen: "./images/gothic.jpg",
     }
   }
-
-  si(){this.setState({imagen:"/public/logo192.png"})}
-  no(){this.setState({imagen:"/public/logo192.png"})}
 
   render(){
     return (
       <div className="App">
         <Sino
           imagen={this.state.imagen}
-          titulo="Yes or Not"
-          textobotonSI="Oh yes!"
-          textobotonNO="Oh no!"
+          titulo="Estilos artísticos"
+          subtitulo="pintura"
+          definicion="Los estilos artísticos demostrados a través de la pintura"
+          textobotonSI="Pop-art"
+          textobotonNO="Gothic"
         />
       </div>
     );
