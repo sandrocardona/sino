@@ -20,11 +20,11 @@ const Sino=(props)=>{
       <CardText>
         {props.definicion}
       </CardText>
-      <Button onClick={()=>props.cambiarFoto(props.rutaGothic)}>
+      <Button onClick={()=>props.cambiarFoto(props.rutaPopart)}>
         {props.popart}
       </Button>
       {' '}
-      <Button onClick={()=>props.cambiarFoto(props.rutaPopart)}>
+      <Button onClick={()=>props.cambiarFoto(props.rutaGothic)}>
         {props.gotico}
       </Button>
     </CardBody>
@@ -38,13 +38,19 @@ class App extends Component {
     super(props);
     this.state={
       imagen: "./images/gothic.jpg",
-      estilo: "",
+      estilo: "Fotografía gótica en blanco y negro",
     }
   }
 
   f(btn){
     this.setState({imagen:btn})
-    this.setState({estilo:btn})
+      if(this.state.imagen==="./images/gothic.jpg"){
+        this.setState({estilo:"Fotografía gótica en blanco y negro"})
+      }
+      else if(this.state.imagen==="./images/pop-art.jpg"){
+        this.setState({estilo:"Diseño digital pop-art"})
+      }
+
   }
 
   render(){
@@ -54,7 +60,7 @@ class App extends Component {
           imagen={this.state.imagen}
           titulo="Estilos artísticos"
           subtitulo={this.state.estilo}
-          definicion="Los estilos artísticos demostrados a través de la pintura"
+          definicion="Los estilos artísticos demostrados a través de la pintura y la fotografía"
           popart="Pop-art"
           gotico="Gothic"
           rutaPopart="./images/pop-art.jpg"
@@ -67,3 +73,11 @@ class App extends Component {
 }
 
 export default App;
+
+/* 
+ROUTING
+MODAL
+HOOKS
+PDF
+DISPLAY VIRTUAL  
+*/
